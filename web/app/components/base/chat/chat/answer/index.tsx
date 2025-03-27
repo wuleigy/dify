@@ -13,7 +13,6 @@ import AgentContent from './agent-content'
 import BasicContent from './basic-content'
 import SuggestedQuestions from './suggested-questions'
 import More from './more'
-import WorkflowProcessItem from './workflow-process'
 import LoadingAnim from '@/app/components/base/chat/chat/loading-anim'
 import Citation from '@/app/components/base/chat/chat/citation'
 import { EditTitle } from '@/app/components/app/annotation/edit-annotation-modal/edit-item'
@@ -130,8 +129,7 @@ const Answer: FC<AnswerProps> = ({
                 />
               )
             }
-            {/** Render the normal steps */}
-            {
+            {/* {
               workflowProcess && !hideProcessDetail && (
                 <WorkflowProcessItem
                   data={workflowProcess}
@@ -140,7 +138,6 @@ const Answer: FC<AnswerProps> = ({
                 />
               )
             }
-            {/** Hide workflow steps by it's settings in siteInfo */}
             {
               workflowProcess && hideProcessDetail && appData && (
                 <WorkflowProcessItem
@@ -150,7 +147,7 @@ const Answer: FC<AnswerProps> = ({
                   readonly={!appData.site.show_workflow_steps}
                 />
               )
-            }
+            } */}
             {
               responding && !content && !hasAgentThoughts && (
                 <div className='flex items-center justify-center w-6 h-5'>
