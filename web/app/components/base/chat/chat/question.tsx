@@ -8,11 +8,13 @@ import {
 import type { ChatItem } from '../types'
 import type { Theme } from '../embedded-chatbot/theme/theme-context'
 import { CssTransform } from '../embedded-chatbot/theme/utils'
-import { User } from '@/app/components/base/icons/src/public/avatar'
+// import { User } from '@/app/components/base/icons/src/public/avatar'
+import user from '@/assets/user.svg'
+import Image from 'next/image'
 import { Markdown } from '@/app/components/base/markdown'
 import { FileList } from '@/app/components/base/file-uploader'
 
-interface QuestionProps {
+type QuestionProps = {
   item: ChatItem
   questionIcon?: ReactNode
   theme: Theme | null | undefined
@@ -51,7 +53,8 @@ const Question: FC<QuestionProps> = ({
         {
           questionIcon || (
             <div className='w-full h-full rounded-full border-[0.5px] border-black/5'>
-              <User className='w-full h-full' />
+              {/* <User className='w-full h-full' /> */}
+              <Image alt='serpapi logo' src={user} width={40} />
             </div>
           )
         }

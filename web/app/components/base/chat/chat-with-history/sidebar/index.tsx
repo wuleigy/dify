@@ -13,10 +13,8 @@ import AppIcon from '@/app/components/base/app-icon'
 import ActionButton from '@/app/components/base/action-button'
 import Button from '@/app/components/base/button'
 import List from '@/app/components/base/chat/chat-with-history/sidebar/list'
-import MenuDropdown from '@/app/components/share/text-generation/menu-dropdown'
 import Confirm from '@/app/components/base/confirm'
 import RenameModal from '@/app/components/base/chat/chat-with-history/sidebar/rename-modal'
-import LogoSite from '@/app/components/base/logo/logo-site'
 import type { ConversationItem } from '@/models/share'
 import cn from '@/utils/classnames'
 
@@ -135,9 +133,8 @@ const Sidebar = ({ isPanel }: Props) => {
           />
         )}
       </div>
-      <div className='shrink-0 p-3 flex items-center justify-between'>
+      {/* <div className='shrink-0 p-3 flex items-center justify-between'>
         <MenuDropdown placement='top-start' data={appData?.site} />
-        {/* powered by */}
         <div className='shrink-0'>
           {!appData?.custom_config?.remove_webapp_brand && (
             <div className={cn(
@@ -153,7 +150,7 @@ const Sidebar = ({ isPanel }: Props) => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
       {!!showConfirm && (
         <Confirm
           title={t('share.chat.deleteConversation.title')}

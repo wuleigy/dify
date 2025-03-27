@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   RiEditBoxLine,
-  RiEqualizer2Line,
   RiExchange2Fill,
   RiImageAddLine,
   RiLayoutLeft2Line,
@@ -236,7 +235,7 @@ const CustomWebAppBrand = () => {
                 <div className='w-[128px] h-2 rounded-sm bg-text-quaternary opacity-20'></div>
               </div>
             </div>
-            <div className='shrink-0 p-3 flex items-center justify-between'>
+            {/* <div className='shrink-0 p-3 flex items-center justify-between'>
               <div className='p-1.5'>
                 <RiEqualizer2Line className='w-4 h-4 text-text-tertiary' />
               </div>
@@ -251,7 +250,7 @@ const CustomWebAppBrand = () => {
                   </>
                 )}
               </div>
-            </div>
+            </div> */}
           </div>
           <div className='grow flex flex-col justify-between w-[138px] p-2 pr-0'>
             <div className='grow pt-16 pl-[22px] pb-4 flex flex-col justify-between bg-chatbot-bg rounded-l-2xl border-[0.5px] border-r-0 border-components-panel-border-subtle'>
