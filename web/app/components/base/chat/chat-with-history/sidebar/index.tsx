@@ -4,13 +4,10 @@ import {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
-  RiEditBoxLine,
-  RiExpandRightLine,
-  RiLayoutLeft2Line,
+  RiAddLine,
 } from '@remixicon/react'
 import { useChatWithHistoryContext } from '../context'
 import AppIcon from '@/app/components/base/app-icon'
-import ActionButton from '@/app/components/base/action-button'
 import Button from '@/app/components/base/button'
 import List from '@/app/components/base/chat/chat-with-history/sidebar/list'
 import Confirm from '@/app/components/base/confirm'
@@ -91,8 +88,8 @@ const Sidebar = ({ isPanel }: Props) => {
             imageUrl={appData?.site.icon_url}
           />
         </div>
-        <div className={cn('grow text-text-secondary system-md-semibold truncate')}>{appData?.site.title}</div>
-        {!isMobile && isSidebarCollapsed && (
+        <div className={cn('grow text-[16px] text-[#333] font-bold truncate')}>{appData?.site.title}</div>
+        {/* {!isMobile && isSidebarCollapsed && (
           <ActionButton size='l' onClick={() => handleSidebarCollapse(false)}>
             <RiExpandRightLine className='w-[18px] h-[18px]' />
           </ActionButton>
@@ -101,15 +98,15 @@ const Sidebar = ({ isPanel }: Props) => {
           <ActionButton size='l' onClick={() => handleSidebarCollapse(true)}>
             <RiLayoutLeft2Line className='w-[18px] h-[18px]' />
           </ActionButton>
-        )}
+        )} */}
       </div>
       <div className='shrink-0 px-3 py-4'>
-        <Button variant='secondary-accent' disabled={isResponding} className='w-full justify-center' onClick={handleNewConversation}>
-          <RiEditBoxLine className='w-4 h-4 mr-1' />
+        <Button style={{ background: '#3B82F6' }} disabled={isResponding} className='text-[14px] h-[40px]  text-[#fff] rounded-[8px]  w-full justify-center' onClick={handleNewConversation}>
+          <RiAddLine className='w-5 h-5 mr-2' />
           {t('share.chat.newChat')}
         </Button>
       </div>
-      <div className='grow h-0 pt-4 px-3 space-y-2 overflow-y-auto'>
+      <div className='grow h-0 pt-4 space-y-2 overflow-y-auto'>
         {/* pinned list */}
         {!!pinnedConversationList.length && (
           <div className='mb-4'>

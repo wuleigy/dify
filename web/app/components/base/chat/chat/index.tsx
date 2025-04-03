@@ -262,7 +262,7 @@ const Chat: FC<ChatProps> = ({
           </div>
         </div>
         <div
-          className={`absolute bottom-0 bg-chat-input-mask flex justify-center ${(hasTryToAsk || !noChatInput || !noStopResponding) && chatFooterClassName}`}
+          className='absolute bottom-0  flex justify-center'
           ref={chatFooterRef}
         >
           <div

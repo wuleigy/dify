@@ -556,7 +556,7 @@ const translation = {
       vectorHash: '向量哈希：',
       hitScore: '召回得分：',
     },
-    inputPlaceholder: '与ITSM助手聊天',
+    inputPlaceholder: '请输入您的问题...',
     thinking: '深度思考中...',
     thought: '已深度思考',
   },

@@ -104,7 +104,7 @@ const Answer: FC<AnswerProps> = ({
       <div className='shrink-0 relative w-10 h-10'>
         {answerIcon || <AnswerIcon />}
         {responding && (
-          <div className='absolute -top-[3px] -left-[3px] pl-[6px] flex items-center w-4 h-4 bg-background-section-burn rounded-full shadow-xs border-[0.5px] border-divider-subtle'>
+          <div className='absolute -top-[3px] -left-[3px] pl-[6px] flex items-center w-4 h-4 bg-background-section-burn shadow-xs border-[0.5px] border-divider-subtle'>
             <LoadingAnim type='avatar' />
           </div>
         )}
@@ -113,7 +113,7 @@ const Answer: FC<AnswerProps> = ({
         <div className={cn('group relative pr-10', chatAnswerContainerInner)}>
           <div
             ref={contentRef}
-            className={cn('relative inline-block px-4 py-3 max-w-full bg-chat-bubble-bg rounded-2xl body-lg-regular text-text-primary', workflowProcess && 'w-full')}
+            className={cn('relative inline-block px-4 py-3 max-w-full bg-[#F8F9FC] rounded-tl-none rounded-br-[12px] rounded-tr-[12px] rounded-bl-[12px] body-lg-regular text-[#333]', workflowProcess && 'w-full')}
           >
             {
               !responding && (

@@ -7,6 +7,9 @@ import { useHover } from 'ahooks'
 import type { ConversationItem } from '@/models/share'
 import Operation from '@/app/components/base/chat/chat-with-history/sidebar/operation'
 import cn from '@/utils/classnames'
+import {
+  RiRobot2Line,
+} from '@remixicon/react'
 
 type ItemProps = {
   isPin?: boolean
@@ -31,12 +34,16 @@ const Item: FC<ItemProps> = ({
       ref={ref}
       key={item.id}
       className={cn(
-        'group flex p-1 pl-3 rounded-lg cursor-pointer text-components-menu-item-text system-sm-medium hover:bg-state-base-hover',
-        isSelected && 'bg-state-accent-active hover:bg-state-accent-active text-text-accent',
+        'group flex p-4 pl-3 cursor-pointer text-components-menu-item-text system-sm-medium hover:bg-state-base-hover',
+        isSelected && 'bg-state-accent-active hover:bg-state-accent-active text-[#3B82F6]',
       )}
       onClick={() => onChangeConversation(item.id)}
     >
-      <div className='grow p-1 pl-0 truncate' title={item.name}>{item.name}</div>
+
+      <div className='grow p-1 pl-0 truncate flex' title={item.name}>
+        <RiRobot2Line className='w-4 h-4 mr-[10px]' />
+        {item.name}
+      </div>
       {item.id !== '' && (
         <div className='shrink-0' onClick={e => e.stopPropagation()}>
           <Operation

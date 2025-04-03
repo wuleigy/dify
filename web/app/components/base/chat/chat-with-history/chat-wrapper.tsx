@@ -232,16 +232,16 @@ const ChatWrapper = () => {
 
   return (
     <div
-      className='h-full bg-chatbot-bg overflow-hidden'
+      className='h-full  overflow-hidden'
     >
       <Chat
         appData={appData}
         config={appConfig}
         chatList={messageList}
         isResponding={respondingState}
-        chatContainerInnerClassName={`mx-auto pt-6 w-full max-w-[768px] ${isMobile && 'px-4'}`}
+        chatContainerInnerClassName={'mx-auto pt-6 w-full'}
         chatFooterClassName='pb-4'
-        chatFooterInnerClassName={`mx-auto w-full max-w-[768px] ${isMobile ? 'px-2' : 'px-4'}`}
+        chatFooterInnerClassName={'mx-auto w-full'}
         onSend={doSend}
         inputs={currentConversationId ? currentConversationItem?.inputs as any : newConversationInputs}
         inputsForm={inputsForms}

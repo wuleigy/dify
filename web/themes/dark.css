@@ -21,9 +21,9 @@ html[data-theme="dark"] {
   --color-components-tooltip-bg: #18181bf2;
 
   --color-components-button-primary-text: #fffffff2;
-  --color-components-button-primary-bg: #155aef;
+  --color-components-button-primary-bg: #FF2400;
   --color-components-button-primary-border: #ffffff1f;
-  --color-components-button-primary-bg-hover: #296dff;
+  --color-components-button-primary-bg-hover: #FF2400;
   --color-components-button-primary-border-hover: #ffffff33;
   --color-components-button-primary-bg-disabled: #ffffff08;
   --color-components-button-primary-border-disabled: #ffffff14;

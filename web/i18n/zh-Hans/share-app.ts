@@ -5,7 +5,7 @@ const translation = {
     appUnknownError: '应用不可用',
   },
   chat: {
-    newChat: '开启新对话',
+    newChat: '新对话',
     newChatTip: '已在新对话中',
     chatSettingsTitle: '新对话设置',
     chatFormTip: '对话开始后，对话设置将无法修改。',

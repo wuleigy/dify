@@ -67,13 +67,13 @@ const ChatWithHistory: FC<ChatWithHistoryProps> = ({
 
   return (
     <div className={cn(
-      'h-full flex bg-background-default-burn',
+      'h-full flex',
       isMobile && 'flex-col',
       className,
     )}>
       {!isMobile && (
         <div className={cn(
-          'flex flex-col w-[236px] p-1 pr-0 transition-all duration-200 ease-in-out',
+          'flex flex-col w-[236px] pr-0 transition-all duration-200 ease-in-out bg-[#F8F9FC] border-r-[1px] border-[#EAEDED]',
           isSidebarCollapsed && 'w-0 !p-0 overflow-hidden',
         )}>
           <Sidebar />
@@ -82,7 +82,7 @@ const ChatWithHistory: FC<ChatWithHistoryProps> = ({
       {isMobile && (
         <HeaderInMobile />
       )}
-      <div className={cn('relative grow p-2', isMobile && 'h-[calc(100%_-_56px)] p-0')}>
+      <div className={cn('relative grow', isMobile && 'h-[calc(100%_-_56px)] p-0')}>
         {isSidebarCollapsed && (
           <div
             className={cn(
@@ -95,7 +95,7 @@ const ChatWithHistory: FC<ChatWithHistoryProps> = ({
             <Sidebar isPanel />
           </div>
         )}
-        <div className={cn('h-full flex flex-col bg-chatbot-bg border-[0,5px] border-components-panel-border-subtle overflow-hidden', isMobile ? 'rounded-t-2xl' : 'rounded-2xl')}>
+        <div className={cn('h-full flex flex-col  border-[0,5px] border-components-panel-border-subtle overflow-hidden', isMobile ? 'rounded-t-2xl' : '')}>
           {!isMobile && <Header />}
           {appChatListDataLoading && (
             <Loading type='app' />
