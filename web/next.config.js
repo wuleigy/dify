@@ -14,8 +14,8 @@ const withMDX = require('@next/mdx')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: process.env.NEXT_PUBLIC_PROXY,
-  assetPrefix: process.env.NEXT_PUBLIC_PROXY,
+  basePath: '/itsm-ai',
+  assetPrefix: '/itsm-ai',
   webpack: (config, { dev, isServer }) => {
     config.plugins.push(codeInspectorPlugin({ bundler: 'webpack' }))
     return config
