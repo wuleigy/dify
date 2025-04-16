@@ -2,12 +2,12 @@ import type { FC } from 'react'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { t } from 'i18next'
 import { createPortal } from 'react-dom'
-import { RiAddBoxLine, RiCloseLine, RiDownloadCloud2Line, RiFileCopyLine, RiZoomInLine, RiZoomOutLine } from '@remixicon/react'
+import { RiCloseLine, RiDownloadCloud2Line, RiZoomInLine, RiZoomOutLine } from '@remixicon/react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import Tooltip from '@/app/components/base/tooltip'
 import Toast from '@/app/components/base/toast'
 
-interface ImagePreviewProps {
+type ImagePreviewProps = {
   url: string
   title: string
   onCancel: () => void
@@ -57,8 +57,29 @@ const ImagePreview: FC<ImagePreviewProps> = ({
   }
 
   const downloadImage = () => {
+    if(url.includes('^blob')) {
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', url, true)
+      xhr.responseType = 'blob'
+      xhr.onload = function () {
+        if (this.status === 200) {
+          const blob = this.response
+          // 调用处理Blob数据进行下载的函数
+          const imgUrl = URL.createObjectURL(blob)
+          const a = document.createElement('a')
+          a.href = imgUrl
+          a.download = 'image.jpg'
+          a.style.display = 'none'
+          document.body.appendChild(a)
+          a.click()
+          document.body.removeChild(a)
+          URL.revokeObjectURL(imgUrl)
+        }
+      }
+      xhr.send()
+    }
     // Open in a new window, considering the case when the page is inside an iframe
-    if (url.startsWith('http') || url.startsWith('https')) {
+    else if (url.startsWith('http') || url.startsWith('https')) {
       const a = document.createElement('a')
       a.href = url
       a.download = title
@@ -219,43 +240,43 @@ const ImagePreview: FC<ImagePreviewProps> = ({
           transition: isDragging ? 'none' : 'transform 0.2s ease-in-out',
         }}
       />
-      <Tooltip popupContent={t('common.operation.copyImage')}>
+      {/* <Tooltip popupContent={t('common.operation.copyImage')}>
         <div className='absolute top-6 right-48 flex items-center justify-center w-8 h-8 rounded-lg cursor-pointer'
           onClick={imageCopy}>
           {isCopied
             ? <RiFileCopyLine className='w-4 h-4 text-green-500'/>
-            : <RiFileCopyLine className='w-4 h-4 text-gray-500'/>}
+            : <RiFileCopyLine className='w-4 h-4 text-[#fff]'/>}
         </div>
-      </Tooltip>
+      </Tooltip> */}
       <Tooltip popupContent={t('common.operation.zoomOut')}>
         <div className='absolute top-6 right-40 flex items-center justify-center w-8 h-8 rounded-lg cursor-pointer'
           onClick={zoomOut}>
-          <RiZoomOutLine className='w-4 h-4 text-gray-500'/>
+          <RiZoomOutLine className='w-4 h-4 text-[#fff]'/>
         </div>
       </Tooltip>
       <Tooltip popupContent={t('common.operation.zoomIn')}>
         <div className='absolute top-6 right-32 flex items-center justify-center w-8 h-8 rounded-lg cursor-pointer'
           onClick={zoomIn}>
-          <RiZoomInLine className='w-4 h-4 text-gray-500'/>
+          <RiZoomInLine className='w-4 h-4 text-[#fff]'/>
         </div>
       </Tooltip>
       <Tooltip popupContent={t('common.operation.download')}>
         <div className='absolute top-6 right-24 flex items-center justify-center w-8 h-8 rounded-lg cursor-pointer'
           onClick={downloadImage}>
-          <RiDownloadCloud2Line className='w-4 h-4 text-gray-500'/>
+          <RiDownloadCloud2Line className='w-4 h-4 text-[#fff]'/>
         </div>
       </Tooltip>
-      <Tooltip popupContent={t('common.operation.openInNewTab')}>
+      {/* <Tooltip popupContent={t('common.operation.openInNewTab')}>
         <div className='absolute top-6 right-16 flex items-center justify-center w-8 h-8 rounded-lg cursor-pointer'
           onClick={openInNewTab}>
-          <RiAddBoxLine className='w-4 h-4 text-gray-500'/>
+          <RiAddBoxLine className='w-4 h-4 text-[#fff]'/>
         </div>
-      </Tooltip>
+      </Tooltip> */}
       <Tooltip popupContent={t('common.operation.cancel')}>
         <div
           className='absolute top-6 right-6 flex items-center justify-center w-8 h-8 bg-white/8 rounded-lg backdrop-blur-[2px] cursor-pointer'
           onClick={onCancel}>
-          <RiCloseLine className='w-4 h-4 text-gray-500'/>
+          <RiCloseLine className='w-4 h-4 text-[#fff]'/>
         </div>
       </Tooltip>
     </div>,

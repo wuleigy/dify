@@ -122,14 +122,14 @@ const Operation: FC<OperationProps> = ({
                 voice={config?.text_to_speech?.voice}
               />
             )}
-            <ActionButton onClick={() => {
+            <ActionButton title='复制' onClick={() => {
               copy(content)
               Toast.notify({ type: 'success', message: t('common.actionMsg.copySuccessfully') })
             }}>
               <RiClipboardLine className='w-4 h-4' />
             </ActionButton>
             {!noChatInput && (
-              <ActionButton onClick={() => onRegenerate?.(item)}>
+              <ActionButton title='重新回答' onClick={() => onRegenerate?.(item)}>
                 <RiResetLeftLine className='w-4 h-4' />
               </ActionButton>
             )}
@@ -144,21 +144,21 @@ const Operation: FC<OperationProps> = ({
           <div className='hidden group-hover:flex ml-1 items-center gap-0.5 p-0.5 rounded-[10px] border-[0.5px] border-components-actionbar-border bg-components-actionbar-bg shadow-md backdrop-blur-sm'>
             {!localFeedback?.rating && (
               <>
-                <ActionButton onClick={() => handleFeedback('like')}>
+                <ActionButton title='满意' onClick={() => handleFeedback('like')}>
                   <RiThumbUpLine className='w-4 h-4' />
                 </ActionButton>
-                <ActionButton onClick={() => handleFeedback('dislike')}>
+                <ActionButton title='不满意' onClick={() => handleFeedback('dislike')}>
                   <RiThumbDownLine className='w-4 h-4' />
                 </ActionButton>
               </>
             )}
             {localFeedback?.rating === 'like' && (
-              <ActionButton state={ActionButtonState.Active} onClick={() => handleFeedback(null)}>
+              <ActionButton title='取消' state={ActionButtonState.Active} onClick={() => handleFeedback(null)}>
                 <RiThumbUpLine className='w-4 h-4' />
               </ActionButton>
             )}
             {localFeedback?.rating === 'dislike' && (
-              <ActionButton state={ActionButtonState.Destructive} onClick={() => handleFeedback(null)}>
+              <ActionButton title='取消' state={ActionButtonState.Destructive} onClick={() => handleFeedback(null)}>
                 <RiThumbDownLine className='w-4 h-4' />
               </ActionButton>
             )}
