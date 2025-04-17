@@ -73,7 +73,7 @@ export const sendChatMessage = async (body: Record<string, any>, { onData, onCom
 }
 
 export const stopChatMessageResponding = async (appId: string, taskId: string, isInstalledApp: boolean, installedAppId = '') => {
-  localStorage.setItem('demotest3', '3')
+  localStorage.setItem('demotest2', '2')
   return getAction('post', isInstalledApp)(getUrl(`chat-messages/${taskId}/stop`, isInstalledApp, installedAppId))
 }
 
