@@ -158,6 +158,7 @@ export const useChat = (
     hasStopResponded.current = true
     handleResponding(false)
     localStorage.setItem('demotest', '0')
+    localStorage.setItem('demotest333', taskIdRef.current)
     if (stopChat && taskIdRef.current) {
       localStorage.setItem('demotest1', '1')
       stopChat(taskIdRef.current)
