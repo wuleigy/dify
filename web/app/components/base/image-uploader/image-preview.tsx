@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { t } from 'i18next'
 import { createPortal } from 'react-dom'
-import { RiCloseLine, RiDownloadCloud2Line, RiZoomInLine, RiZoomOutLine } from '@remixicon/react'
+import { RiCloseLine, RiZoomInLine, RiZoomOutLine } from '@remixicon/react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import Tooltip from '@/app/components/base/tooltip'
 import Toast from '@/app/components/base/toast'
@@ -260,12 +260,12 @@ const ImagePreview: FC<ImagePreviewProps> = ({
           <RiZoomInLine className='w-4 h-4 text-[#fff]'/>
         </div>
       </Tooltip>
-      <Tooltip popupContent={t('common.operation.download')}>
+      {/* <Tooltip popupContent={t('common.operation.download')}>
         <div className='absolute top-6 right-24 flex items-center justify-center w-8 h-8 rounded-lg cursor-pointer'
           onClick={downloadImage}>
           <RiDownloadCloud2Line className='w-4 h-4 text-[#fff]'/>
         </div>
-      </Tooltip>
+      </Tooltip> */}
       {/* <Tooltip popupContent={t('common.operation.openInNewTab')}>
         <div className='absolute top-6 right-16 flex items-center justify-center w-8 h-8 rounded-lg cursor-pointer'
           onClick={openInNewTab}>

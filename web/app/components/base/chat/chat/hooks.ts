@@ -157,8 +157,11 @@ export const useChat = (
   const handleStop = useCallback(() => {
     hasStopResponded.current = true
     handleResponding(false)
-    if (stopChat && taskIdRef.current)
+    localStorage.setItem('demotest', '0')
+    if (stopChat && taskIdRef.current) {
+      localStorage.setItem('demotest1', '1')
       stopChat(taskIdRef.current)
+    }
     if (conversationMessagesAbortControllerRef.current)
       conversationMessagesAbortControllerRef.current.abort()
     if (suggestedQuestionsAbortControllerRef.current)
