@@ -339,7 +339,7 @@ export const useChat = (
 
           if (isFirstMessage && newConversationId)
             conversationId.current = newConversationId
-          if(!taskId)
+          if(taskId)
             taskIdRef.current = taskId
 
           if (messageId)
