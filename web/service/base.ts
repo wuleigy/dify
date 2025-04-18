@@ -174,6 +174,7 @@ const handleStream = (
               onData('', isFirstMessage, {
                 conversationId: bufferObj?.conversation_id,
                 messageId: bufferObj?.message_id,
+                taskId: bufferObj?.task_id,
               })
               return
             }
@@ -181,6 +182,7 @@ const handleStream = (
               onData('', false, {
                 conversationId: undefined,
                 messageId: '',
+                taskId: bufferObj?.task_id,
                 errorMessage: bufferObj?.message,
                 errorCode: bufferObj?.code,
               })
@@ -189,8 +191,6 @@ const handleStream = (
               return
             }
             if (bufferObj.event === 'message' || bufferObj.event === 'agent_message') {
-              console.log('demotest9999', bufferObj.task_id)
-              console.log('demotest8888', bufferObj)
               // can not use format here. Because message is splitted.
               onData(unicodeToChar(bufferObj.answer), isFirstMessage, {
                 conversationId: bufferObj.conversation_id,
@@ -274,6 +274,7 @@ const handleStream = (
           conversationId: undefined,
           messageId: '',
           errorMessage: `${e}`,
+          taskId: bufferObj?.task_id,
         })
         hasError = true
         onCompleted?.(true, e as string)

@@ -157,7 +157,6 @@ export const useChat = (
   const handleStop = useCallback(() => {
     hasStopResponded.current = true
     handleResponding(false)
-    localStorage.setItem('demotest6666', taskIdRef.current)
     if (stopChat && taskIdRef.current)
       stopChat(taskIdRef.current)
 
@@ -169,7 +168,6 @@ export const useChat = (
 
   const handleRestart = useCallback((cb?: any) => {
     conversationId.current = ''
-    console.log('demotest3333333')
     taskIdRef.current = ''
     handleStop()
     setChatTree([])
@@ -341,9 +339,9 @@ export const useChat = (
 
           if (isFirstMessage && newConversationId)
             conversationId.current = newConversationId
+          if(!taskId)
+            taskIdRef.current = taskId
 
-          taskIdRef.current = taskId
-          console.log('demotest22222222', taskId)
           if (messageId)
             responseItem.id = messageId
 
@@ -492,7 +490,6 @@ export const useChat = (
           })
         },
         onWorkflowStarted: ({ workflow_run_id, task_id }) => {
-          console.log('demotest1111111111', task_id)
           taskIdRef.current = task_id
           responseItem.workflow_run_id = workflow_run_id
           responseItem.workflowProcess = {
