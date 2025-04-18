@@ -189,11 +189,13 @@ const handleStream = (
               return
             }
             if (bufferObj.event === 'message' || bufferObj.event === 'agent_message') {
+              console.log('demotest9999', bufferObj.task_id)
+              console.log('demotest8888', bufferObj)
               // can not use format here. Because message is splitted.
               onData(unicodeToChar(bufferObj.answer), isFirstMessage, {
                 conversationId: bufferObj.conversation_id,
-                taskId: bufferObj.task_id,
                 messageId: bufferObj.id,
+                taskId: bufferObj.task_id,
               })
               isFirstMessage = false
             }
