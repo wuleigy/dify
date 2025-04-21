@@ -284,6 +284,7 @@ export const useChat = (
       query,
       inputs: getProcessedInputs(inputs || {}, formSettings?.inputsForm || []),
       ...restData,
+      user: new URLSearchParams(window.location.search).get('user') || '',
     }
     if (bodyParams?.files?.length) {
       bodyParams.files = bodyParams.files.map((item) => {

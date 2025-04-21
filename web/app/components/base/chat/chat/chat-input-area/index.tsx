@@ -66,7 +66,7 @@ const ChatInputArea = ({
     handleTextareaResize,
     isMultipleLine,
   } = useTextAreaHeight()
-  const [query, setQuery] = useState('')
+  let [query, setQuery] = useState('')
   const [showVoiceInput, setShowVoiceInput] = useState(false)
   const filesStore = useFileStore()
   const {
@@ -88,6 +88,9 @@ const ChatInputArea = ({
 
     if (onSend) {
       const { files, setFiles } = filesStore.getState()
+      if(files.length > 0 && (!query || !query.trim()))
+        query = '附件'
+
       if (files.find(item => item.transferMethod === TransferMethod.local_file && !item.uploadedId)) {
         notify({ type: 'info', message: t('appDebug.errorMessage.waitForFileUpload') })
         return
