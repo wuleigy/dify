@@ -41,8 +41,8 @@ const Item: FC<ItemProps> = ({
     >
 
       <div className='grow p-1 pl-0 truncate flex' title={item.name}>
-        <RiRobot2Line className='w-4 h-4 mr-[10px]' />
-        {item.name}
+        <p className='w-4 mr-[10px]'><RiRobot2Line className='w-4 h-4' /></p>
+        <p className='flex-[1]'>{item.name}</p>
       </div>
       {item.id !== '' && (
         <div className='shrink-0' onClick={e => e.stopPropagation()}>

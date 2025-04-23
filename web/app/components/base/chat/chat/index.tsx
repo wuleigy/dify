@@ -138,11 +138,11 @@ const Chat: FC<ChatProps> = ({
     if (chatContainerRef.current)
       setWidth(document.body.clientWidth - (chatContainerRef.current?.clientWidth + 16) - 8)
 
-    if (chatContainerRef.current && chatFooterRef.current)
-      chatFooterRef.current.style.width = `${chatContainerRef.current.clientWidth}px`
+    // if (chatContainerRef.current && chatFooterRef.current)
+    //   chatFooterRef.current.style.width = `${chatContainerRef.current.clientWidth}px`
 
-    if (chatContainerInnerRef.current && chatFooterInnerRef.current)
-      chatFooterInnerRef.current.style.width = `${chatContainerInnerRef.current.clientWidth}px`
+    // if (chatContainerInnerRef.current && chatFooterInnerRef.current)
+    //   chatFooterInnerRef.current.style.width = `${chatContainerInnerRef.current.clientWidth}px`
   }, [])
 
   useEffect(() => {
@@ -262,7 +262,7 @@ const Chat: FC<ChatProps> = ({
           </div>
         </div>
         <div
-          className='absolute bottom-0  flex justify-center'
+          className='absolute bottom-0  flex justify-center w-full'
           ref={chatFooterRef}
         >
           <div
