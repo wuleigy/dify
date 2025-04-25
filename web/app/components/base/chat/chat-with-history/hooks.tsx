@@ -331,6 +331,7 @@ export const useChatWithHistory = (installedAppInfo?: InstalledApp) => {
     handleNewConversationInputsChange({
       userId: new URLSearchParams(window.location.search).get('userId') || '',
       token: new URLSearchParams(window.location.search).get('token') || '',
+      user: new URLSearchParams(window.location.search).get('user') || '',
     })
     setClearChatList(true)
   }, [handleChangeConversation, setShowNewConversationItemInList, handleNewConversationInputsChange, setClearChatList])

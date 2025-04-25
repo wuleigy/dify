@@ -277,6 +277,7 @@ export const useChat = (
     // 处理请求的接口需要每次取最新，不取历史数据的值
     inputs.token = new URLSearchParams(window.location.search).get('token') || ''
     inputs.userId = new URLSearchParams(window.location.search).get('userId') || ''
+    inputs.user = new URLSearchParams(window.location.search).get('user') || ''
     const bodyParams = {
       response_mode: 'streaming',
       conversation_id: conversationId.current,
