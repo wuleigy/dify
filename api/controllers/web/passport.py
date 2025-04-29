@@ -36,23 +36,42 @@ class PassportResource(Resource):
         if not app_model or app_model.status != "normal" or not app_model.enable_site:
             raise NotFound()
 
-        end_user = EndUser(
-            tenant_id=app_model.tenant_id,
-            app_id=app_model.id,
-            type="browser",
-            is_anonymous=True,
-            session_id=generate_session_id(),
-        )
-
-        db.session.add(end_user)
-        db.session.commit()
+        if "userId" in request.args:
+            userId = request.args.get('userId', default="241", type=str)
+            name = request.args.get('user', default="itsm", type=str)
+            db_end_user = db.session.query(EndUser).filter(EndUser.session_id == userId).first()
+            if not db_end_user:
+                end_user = EndUser(
+                    tenant_id=app_model.tenant_id,
+                    app_id=app_model.id,
+                    type="browser",
+                    is_anonymous=True,
+                    session_id=userId,
+                    name=name,
+                )
+                db.session.add(end_user)
+                db.session.commit()
+                end_user_id = end_user.id
+            else:
+                end_user_id = db_end_user.id
+        else:
+            end_user = EndUser(
+                tenant_id=app_model.tenant_id,
+                app_id=app_model.id,
+                type="browser",
+                is_anonymous=True,
+                session_id=generate_session_id(),
+            )
+            db.session.add(end_user)
+            db.session.commit()
+            end_user_id = end_user.id
 
         payload = {
             "iss": site.app_id,
             "sub": "Web API Passport",
             "app_id": site.app_id,
             "app_code": app_code,
-            "end_user_id": end_user.id,
+            "end_user_id": end_user_id,
         }
 
         tk = PassportService().issue(payload)
