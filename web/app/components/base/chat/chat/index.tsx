@@ -135,6 +135,9 @@ const Chat: FC<ChatProps> = ({
   const handleScrollToBottom = useCallback(() => {
     if (chatList.length > 1 && chatContainerRef.current)
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight - chatContainerRef.current.clientHeight
+
+    else
+      setuserScrolledRef(false)
   }, [chatList.length])
 
   const handleWindowResize = useCallback(() => {
