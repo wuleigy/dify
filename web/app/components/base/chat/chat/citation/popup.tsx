@@ -20,6 +20,8 @@ import {
   BezierCurve03,
   TypeSquare,
 } from '@/app/components/base/icons/src/vender/line/editor'
+import copy from 'copy-to-clipboard'
+import Toast from '../../../../base/toast'
 
 type PopupProps = {
   data: Resources
@@ -49,7 +51,10 @@ const Popup: FC<PopupProps> = ({
       <PortalToFollowElemTrigger onClick={() => setOpen(v => !v)}>
         <div className='flex items-center px-2 max-w-[240px] h-7 bg-components-button-secondary-bg rounded-lg'>
           <FileIcon type={fileType} className='shrink-0 mr-1 w-4 h-4' />
-          <div className='text-xs text-text-tertiary truncate'>{data.documentName}</div>
+          <div onClick={() => {
+            copy(data.documentName)
+            Toast.notify({ type: 'success', message: t('common.actionMsg.copySuccessfully') })
+          }} title={data.documentName} className='cursor-pointer text-xs text-text-tertiary truncate'>{data.documentName}</div>
         </div>
       </PortalToFollowElemTrigger>
       <PortalToFollowElemContent style={{ zIndex: 1000 }}>
@@ -57,7 +62,10 @@ const Popup: FC<PopupProps> = ({
           <div className='px-4 pt-3 pb-2'>
             <div className='flex items-center h-[18px]'>
               <FileIcon type={fileType} className='shrink-0 mr-1 w-4 h-4' />
-              <div className='system-xs-medium text-text-tertiary truncate'>{data.documentName}</div>
+              <div onClick={() => {
+                copy(data.documentName)
+                Toast.notify({ type: 'success', message: t('common.actionMsg.copySuccessfully') })
+              }} title={data.documentName} className='cursor-pointer system-xs-medium text-text-tertiary truncate'>{data.documentName}</div>
             </div>
           </div>
           <div className='px-4 py-0.5 max-h-[450px] bg-components-panel-bg rounded-lg overflow-y-auto'>

@@ -95,7 +95,7 @@ const Citation: FC<CitationProps> = ({
         }
         {
           resources.slice(0, showMore ? resourcesLength : limitNumberInOneLine).map((res, index) => (
-            <div key={index} className='mr-1 mb-1 cursor-pointer'>
+            <div title={res.documentName} key={index} className='mr-1 mb-1 cursor-pointer'>
               <Popup
                 data={res}
                 showHitInfo={showHitInfo}
