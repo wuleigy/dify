@@ -826,6 +826,15 @@ class Conversation(db.Model):  # type: ignore[name-defined]
         return None
 
     @property
+    def from_end_user_name(self):
+        if self.from_end_user_id:
+            end_user = db.session.query(EndUser).filter(EndUser.id == self.from_end_user_id).first()
+            if end_user:
+                return end_user.name
+
+        return None
+
+    @property
     def from_account_name(self):
         if self.from_account_id:
             account = db.session.query(Account).filter(Account.id == self.from_account_id).first()
