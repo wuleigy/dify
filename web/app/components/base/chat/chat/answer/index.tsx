@@ -60,6 +60,7 @@ const Answer: FC<AnswerProps> = ({
     workflowProcess,
     allFiles,
     message_files,
+    feedback,
   } = item
   const hasAgentThoughts = !!agent_thoughts?.length
 
@@ -113,6 +114,7 @@ const Answer: FC<AnswerProps> = ({
         <div className={cn('group relative pr-10', chatAnswerContainerInner)}>
           <div
             ref={contentRef}
+            style={{ border: feedback?.rating === 'like' ? '1px solid #155EEF' : feedback?.rating === 'dislike' ? '1px solid #DC2626' : 'none' }}
             className={cn('relative inline-block px-4 py-3 max-w-full bg-[#F8F9FC] rounded-tl-none rounded-br-[12px] rounded-tr-[12px] rounded-bl-[12px] body-lg-regular text-[#333]', workflowProcess && 'w-full')}
           >
             {
